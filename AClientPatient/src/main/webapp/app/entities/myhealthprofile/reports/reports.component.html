@@ -1,0 +1,72 @@
+<div id="reports" class="tab-pane mt-4">
+    <form class="mb-3">
+        <div class="form-row search-form-wrap">
+            <div class="col">
+                <label class="select-wrap">
+                    <select class="custom-select d-inline-block" id="inlineFormCustomSelect" [(ngModel)]="itemsPerPage"
+                        (change)="viewChange($event.target.value)">
+                        <option [value]="8" [selected]="itemsPerPage === 8">View 8</option>
+                        <option [value]="16" [selected]="itemsPerPage === 16">View 16</option>
+                        <option [value]="32" [selected]="itemsPerPage === 32">View 32</option>
+                        <option [value]="40" [selected]="itemsPerPage === 40">View 40</option>
+                    </select>
+                </label>
+            </div>
+            <div class="col text-right">
+                <div class="d-inline-block">
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#add-report" (click)="openDialog()"><i
+                            class="fas fa-plus mr-1"></i>Add New</a>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="table-responsive ">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Document Name</th>
+                    <th scope="col">Document Type</th>
+                    <th scope="col">Type Description</th>
+                    <th scope="col">Created Date</th>
+                    <th scope="col">Updated Date</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let report of reports; index as i;">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{report.documentName}}</td>
+                    <td>{{report.documentTypes.typeName}}</td>
+                    <td>{{report.documentTypes.typeDiscription}}</td>
+                    <td>{{report.createdDate | date:'MM dd, yyyy, hh:mm:ss a'}}</td>
+                    <td>{{report.lastModifiedDate | date:'MM dd, yyyy, hh:mm:ss a'}}</td>
+                    <td class="text-right"><i class="far fa-download mr-1"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col">
+        <p>Showing 1 to 8 of 2 entries</p>
+    </div>
+    <div class="col">
+        <ul class="pagination justify-content-end">
+            <!-- <li class="page-item disabled" (click)="onClickPage(activePage - 1)">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item active" [ngClass]="{'active': activePage === item}" *ngFor="let item of page" (click)="onClickPage(item)">
+                <a class="page-link" href="#">{{item}} <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="page-item" (click)="onClickPage(activePage + 1)">
+                <a class="page-link" href="#">Next</a>
+            </li> -->
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </ul>
+    </div>
+
+</div>

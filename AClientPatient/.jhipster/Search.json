@@ -1,0 +1,45 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+		{
+			"relationshipName": "locations",
+			"otherEntityName": "locations",
+			"relationshipType": "one-to-many",			
+			"otherEntityField": "location",
+			"otherEntityRelationshipName": "search"
+		},
+		{
+			"relationshipName": "specialities",
+			"otherEntityName": "specialities",
+			"relationshipType": "one-to-many",			
+			"otherEntityField": "speciality",
+			"otherEntityRelationshipName": "search"
+		}
+	],
+    "fields": [
+        {
+            "fieldName": "firstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "imageUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phoneNumber",
+            "fieldType": "String"
+        }
+    ],
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "search",
+    "databaseType": "postgres",
+    "readOnly": false,
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

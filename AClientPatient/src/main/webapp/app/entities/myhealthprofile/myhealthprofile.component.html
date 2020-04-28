@@ -1,0 +1,74 @@
+<div class="wrapper view-patient-wrap">
+    <div id="content">
+        <div class="main-wrapper doctor-wrapper" *jhiHasAnyAuthority="['ROLE_PATIENT']">
+            <h2 class="mb-3">My Health Profile</h2>
+            <div class="row">
+                <div class="col-xl-3">
+                    <div class="bg-white rounded shadow">
+                        <div class="basic-info title text-center">
+                            <div class="patient-img"></div>
+                            <h3 class="mb-0">Emma</h3>
+                            <small><i class="fas fa-map-marker-alt mr-2"></i>Seattle USA</small>
+                        </div>
+                        <div class="address-info">
+                            <div class="border-top">
+                                <div class="row">
+                                    <div class="col">Age</div>
+                                    <div class="col">
+                                        <p class="mb-0">55</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-top">
+                                <div class="row">
+                                    <div class="col">Birthday</div>
+                                    <div class="col">
+                                        <p class="mb-0">28/02/74</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-top">
+                                <div class="row">
+                                    <div class="col">Address</div>
+                                    <div class="col">
+                                        <p class="mb-0">475 New Hight Line Way<br />San Francisco<br />GH0438</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9">
+                    <div class="bg-white rounded shadow view-health-profile">
+
+                        <nav class="nav nav-tabs nav-justified">
+                            <a class="nav-item nav-link" routerLinkActive="active" data-toggle="tab"
+                                routerLink="mystats">
+                                <span>My Stats</span>
+                            </a>
+                            <a class=" nav-item nav-link" routerLinkActive="active" data-toggle="tab"
+                                routerLink="myvitals">
+                                <span>My Vitals</span>
+                            </a>
+                            <a class="nav-item nav-link" routerLinkActive="active" data-toggle="tab"
+                                routerLink="reports">
+                                <span>Reports</span>
+                            </a>
+                            <a class="nav-item nav-link" routerLinkActive="active" data-toggle="tab"
+                                routerLink="prescriptions">
+                                <span>Prescriptions</span>
+                            </a>
+                            <a class="nav-item nav-link" routerLinkActive="active" data-toggle="tab"
+                                routerLink="myappointments">
+                                <span>My Appointments</span>
+                            </a>
+                        </nav>
+                        <div class="tab-content border-top">
+                            <router-outlet></router-outlet>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

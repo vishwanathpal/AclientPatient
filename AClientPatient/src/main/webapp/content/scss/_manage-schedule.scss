@@ -1,0 +1,54 @@
+
+.manage-schedule-wrap{
+    h2{
+        font-size: 23px;
+        font-weight: 700;
+    }
+    h3{
+        font-size: 16px;
+        font-weight: 700;
+    }
+    .col-md-5{
+        .bg-white{
+            @include media-breakpoint-down(sm) { 
+                margin-bottom: 24px;
+            }
+        }
+    }
+    .table-hover{
+        &.table-bordered{
+            thead{
+                th{
+                    border: 0;
+                }  
+            }   
+            tbody{
+                tr{                
+                    td, th{
+                        border-right: 0;
+                        border-left: 0;
+                    }
+                    td{
+                        &:first-child{
+                            border-right: 1px solid #dee2e6;
+                            border-left: 1px solid #dee2e6;
+                        }
+                    }
+                }
+            }            
+        }         
+        tbody{
+            tr{
+                &:hover{
+                    background-color: #def3e2;
+                    cursor: pointer;
+                }
+            }
+            th{
+                span{
+                    font-weight: 400;
+                }
+            }
+        } 
+    } 
+}

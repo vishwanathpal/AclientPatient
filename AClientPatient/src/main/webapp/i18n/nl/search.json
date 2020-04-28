@@ -1,0 +1,27 @@
+{
+  "aClientPatientApp": {
+    "search": {
+      "home": {
+        "title": "Searches",
+        "createLabel": "Maak een nieuwe Search",
+        "createOrEditLabel": "Maak of wijzig een Search",
+        "notFound": "No Searches found"
+      },
+      "created": "A new Search is created with identifier {{ param }}",
+      "updated": "A Search is updated with identifier {{ param }}",
+      "deleted": "A Search is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Bent u zeker dat u Search {{ id }} wilt verwijderen?"
+      },
+      "detail": {
+        "title": "Search"
+      },
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "imageUrl": "Image Url",
+      "phoneNumber": "Phone Number",
+      "locations": "Locations",
+      "specialities": "Specialities"
+    }
+  }
+}

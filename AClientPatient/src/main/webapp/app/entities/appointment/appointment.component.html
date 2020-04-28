@@ -1,0 +1,134 @@
+<div class="wrapper appointment-view" *jhiHasAnyAuthority="['ROLE_PATIENT']">
+    <!-- Page Content  -->
+    <div id="content">
+        <div class="appointment-confirmation-wrap">
+            <div class="main-wrapper patient-appointment">
+                <h1 class="marginTop0">View All Appointments</h1>
+                <div class="bg-white rounded shadow p-4">
+                    <form class="mb-0">
+                        <div class="form-row search-form-wrap">
+                            <div class="col">
+                                <label class="select-wrap">
+                                    <select class="custom-select d-inline-block" name="inlineFormCustomSelect" id="inlineFormCustomSelect" [(ngModel)]="itemsPerPage" (change)="viewChange($event.target.value)">
+                                        <!-- <option value="1" [selected]="itemsPerPage === 1">View 1</option>
+                                        <option value="2" [selected]="itemsPerPage === 2">View 2</option>
+                                        <option value="3" [selected]="itemsPerPage === 3">View 3</option>
+                                        <option value="4" [selected]="itemsPerPage === 4">View 4</option> -->
+
+                                        <option value="8" [selected]="itemsPerPage === 8">View 8</option>
+                                        <option value="16" [selected]="itemsPerPage === 16">View 16</option>
+                                        <option value="32" [selected]="itemsPerPage === 32">View 32</option>
+                                        <option value="40" [selected]="itemsPerPage === 40">View 40</option>
+                                    </select>
+                                </label>                                
+                            </div>
+                            <!-- <div class="col text-right">
+                                <div class="search d-inline-block">
+                                    <i class="fas fa-search"></i>
+                                    <input type="text" class="form-control mr-2 d-inline-block" placeholder="Search Dcotor">
+                                </div>                                
+                            </div> -->
+                        </div>
+                    </form>
+                    <div class="table-responsive mb-3">
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="transition.bind(this)">
+                                    <th scope="col">Doctor</th>
+                                    <th scope="col">Specialist</th>
+                                    <th scope="col" jhiSortBy="slotDateTime">Date and time <fa-icon [icon]="'sort'"></fa-icon></th>
+                                    <th scope="col" jhiSortBy="status">Status <fa-icon [icon]="'sort'"></fa-icon></th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let appoint of appointments">
+                                    <td><img src="{{appoint.proImageUrl}}" alt="user" class="mr-3">Dr. {{appoint.proFirstName}} {{appoint.proLastName}}</td>
+                                    <td>{{appoint.proSpecialities}}</td>
+                                    <td>{{appoint.slotStartDateTime | date:'EEE, d MMMM, y'}} at: {{appoint.slotStartDateTime | date:'h:mm a'}} to {{appoint.slotEndDateTime | date:'h:mm a'}}</td>
+                                    <td><span [ngClass]="{'confirm': appoint.status == 'CONFIRM', 'pending': appoint.status == 'PENDING_CONFIRMATION', 'cancel': appoint.status == 'CANCELLED'}">{{appoint.status}}</span></td>
+                                    <td>
+                                        <a *ngIf="appoint.status == 'CONFIRM' || appoint.status == 'PENDING_CONFIRMATION'" href="javascript:void(0)" data-toggle="modal" data-target="#cancel" class="text-danger-custom mr-2" role="button" aria-disabled="true" (click)="cancelRequest(appoint)">Cancel Request</a>
+                                        <a *ngIf="appoint.status == 'CONFIRM' || appoint.status == 'PENDING_CONFIRMATION'" href="javascript:void(0)" data-toggle="modal" data-target="#reschedule-request" class="text-info-custom" role="button" aria-disabled="true" (click)="rescheduleRequest(appoint)">Reschedule Request</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div *ngIf="appointments" class="row">
+                        <div class="col">
+                            <div class="justify-content-center">
+                                <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+                            </div>
+                        </div>                    
+                        <div class="col">
+                            <div class="pagination justify-content-end">
+                                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+                            </div>
+                        </div>                    
+                    </div>                
+                </div>
+                <div class="modal fade" id="cancel" tabindex="-1" role="dialog" aria-labelledby="cancel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closebutton>
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="modal-body text-center">
+                                <p class="mb-8">Are you sure you want to cancel the appointment ?</p>
+                                <div class="button-group mb-4 pb-2">
+                                    <a class="btn btn-secondary mr-3" data-dismiss="modal" role="button">No</a>
+                                    <a class="btn btn-primary" (click)="cancelAppointment()" role="button">Yes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="reschedule-request" tabindex="-1" role="dialog" aria-labelledby="reschedule-request" aria-hidden="true" >
+                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closebutton1>
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="modal-body">
+                                <div class="row m-0">
+                                    <div class="col-md-6 p-0">
+                                        <h3 class="pb-2 border-bottom">Select Date</h3>
+                                        <div class="date-selection">
+                                            <div class="row m-0">
+                                                <div class="col-md-2 p-0"></div>
+                                                <div class="col-md-8 p-0">
+                                                    <mat-calendar #calendar1 [selected]="selectedDate" (selectedChange)="onSelect($event)" ></mat-calendar>
+                                                </div>
+                                                <div class="col-md-2 p-0"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 p-0">
+                                        <h3 class="pb-2 border-bottom">Select Time Slot</h3>
+                                        <div class="time-slots" *ngIf="slotsByDate">
+                                            <ul class="list-unstyled">
+                                                <li *ngFor="let slot of slotsByDate" [class.active] = "slot == selectedSlot1">
+                                                    <a *ngIf="slot.isOccupied" class="btn-secondary">{{slot.dateTime | date:'shortTime'}}</a>
+                                                    <a (click)="selectTime1(slot)" *ngIf="!slot.isOccupied">{{slot.dateTime | date:'shortTime'}}</a>
+                                                </li>	                                            
+                                            </ul>
+                                        </div>
+                                        <div *ngIf="!slotsByDate?.length">
+                                            <h3 class="pb-2 mb-3">No time slots found for this date.</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button-group mt-3 text-center">
+                                    <a class="btn btn-secondary mr-3" data-dismiss="modal" role="button">Cancel</a>
+                                    <a class="btn btn-primary" (click)="rescheduleAppointment()" role="button" [class.disabled]="confirmButtom1">Save</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                   
+            </div>
+        </div>
+    </div>
+</div>
+

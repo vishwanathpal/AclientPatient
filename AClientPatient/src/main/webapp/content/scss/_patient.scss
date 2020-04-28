@@ -1,0 +1,647 @@
+@import "../css/styles";
+.view-patient-wrap{
+    #content{
+        .main-wrapper{
+            .row{
+                > div{
+                    @include media-breakpoint-down(lg) { 
+                        margin-bottom: 24px;
+                    }
+                }
+            }
+        }
+        .bg-white{            
+            &.rounded{
+                min-height: 100%;
+                padding: 20px;
+            }
+        }
+        h2{
+            font-size: 23px;
+            font-weight: 700;
+        }
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            &.pb-2{
+                border-bottom: 1px solid #e9e9e9;
+            }            
+        }
+        .nav-justified{
+            .nav-item{
+                text-align: left;
+                padding: 0 0 7px;
+                font-size: 16px;
+                font-weight: 700;
+                color: $light-black;
+                display: inline-block;
+                max-width: 25%;
+                border: 0;  
+                span{
+                    position: relative;
+                }                
+                &.active, &:hover{
+                    span{
+                        &:after{
+                            content: '';
+                            border: 2px solid $primary;
+                            position: absolute;
+                            left: 0;
+                            bottom: -8px;
+                            width: 100%;                             
+                        }                        
+                    }
+                }
+            }
+        } 
+        .table{
+            th{
+                vertical-align: middle;
+            }
+            i{                
+                &.text-info-custom{
+                    color: #51b0e2;
+                }
+                &.text-success-custom{
+                    color: #49e195;
+                }
+                &.text-danger-custom{
+                    color: #ff0000;
+                }
+            }
+        }
+        .basic-info{
+            margin-top: 24px;
+            margin-bottom: 40px;
+            .patient-img{
+                height: 126px;
+                width: 126px;
+                border: 2px solid $primary;
+                background-image: url('../images/doctor-thumb-lg.png');
+                background-position: center;
+                margin: 0 auto 16px;
+                @extend .rounded-circle !optional; 
+            }
+            h3{
+                font-size: 16px;
+                font-weight: 700;
+            }
+            small{
+                font-size: 13px;
+                color: $light-gray;
+            }
+        }
+        .address-info{
+            .row{
+                padding: 14px 0;
+            }
+        }
+        .appointments-block{
+            p{
+                font-size: 13px;
+            }
+            h6{
+                font-size: 14px;
+                font-weight: 700;
+            }
+            small{
+                font-size: 12px;
+                color: $light-gray;
+            }
+            .badge{
+                font-size: 12px;
+                line-height: 14px;
+                font-weight: 400;
+                padding: 2px 9px;
+                width: 75px;
+                &.badge-success{
+                    color: #10a74a;
+                    border: 1px solid #10a74a;
+                    background-color: transparent;
+                }
+                &.badge-danger{
+                    color: #cc3e3e;
+                    border: 1px solid #cc3e3e;
+                    background-color: transparent;
+                }
+                &.badge-confirm{
+                    color: #10a74a;
+                    border: 1px solid #10a74a;
+                    background-color: transparent;
+                }
+                &.badge-cancel{
+                    color: #cc3e3e;
+                    border: 1px solid #cc3e3e;
+                    background-color: transparent;
+                }
+                &.badge-pending{
+                    color: #ffc107;
+                    border: 1px solid #ffc107;
+                    background-color: transparent;
+                }
+            }
+            .link-group{
+                a{
+                    font-size: 12px;
+                    line-height: 24px;
+                    color: #4788f5;
+                    &.float-right{ 
+                        color: #cc3e3e;
+                    }
+                }
+            }
+        }
+        .view-health-profile{
+            .search-form-wrap{                
+                .btn{
+                    padding: 10px 20px;
+                    height: 45px;
+                    font-size: 14px;
+                    min-width: 105px;
+                    color: $white;
+                    i{
+                        font-size: 12px;
+                        font-weight: 400;
+                    }
+                }
+            }
+            .nav-justified{
+                .nav-item{
+                    @include media-breakpoint-down(sm) { 
+                        max-width: 100%;
+                        flex-basis: 100%;
+                        padding: 10px 0;
+                        border-bottom: 2px solid #dee2e6;
+                    }
+                    span{
+                        @include media-breakpoint-down(sm) {
+                            display: block;
+                        }
+                        &:after{
+                            @include media-breakpoint-down(sm) {
+                                bottom: -11px;
+                            }
+                        }
+                    }
+                }
+            } 
+        }
+    }
+}
+
+.patient-dashboard{
+    #content{
+        .select-wrap{
+            &:after{
+                right: 10px;
+                top: 6px;
+                font-size: 13px;
+            }
+        }
+        .custom-select{
+            height: 30px;
+            font-size: 13px;
+            line-height: 16px;
+        }
+        .bg-white{            
+            &.rounded{
+                min-height: auto; 
+            }
+        }
+        .patient-wrap{
+            .border-bottom{
+                padding: 30px 0;
+                &.border-0{
+                    padding-bottom: 8px;
+                }
+            }
+        }
+        .patient-img{
+            height: 80px;
+            width: 80px;
+            border: 2px solid $primary;
+            background-image: url('../images/doctor-thumb-lg.png');
+            background-position: center;
+            margin: 0 auto 16px;
+            @extend .rounded-circle !optional; 
+            vertical-align: middle;
+            margin-right: 20px;
+        }
+        .basic-info{
+            vertical-align: middle;
+            h3{
+                font-size: 19px;
+            }
+            small{
+                font-size: 16px;
+            }
+        }
+        .health-info{            
+            &.mb-8{
+                margin-bottom: 40px;
+            }
+            svg{
+                height: 30px; 
+                width: auto;
+            }
+            span{
+                margin-bottom: 10px;
+                &.text-info-custom{
+                    svg{
+                        path{
+                            fill: #5cb4e6;
+                        }
+                    }
+                }
+                &.text-success-custom{
+                    svg{
+                        path{
+                            fill: #55ab63;
+                        }
+                    }
+                    &.before-after{
+                        svg{
+                            height: 60px;
+                        }
+                    }
+                }
+                &.text-danger-custom{
+                    svg{
+                        path{
+                            fill: #ff0000;
+                        }
+                    }
+                }
+                &.text-warning-custom{
+                    svg{
+                        path{
+                            fill: #ffc600;
+                        }
+                    }
+                }
+            }
+            p{
+                font-size: 18px;
+                line-height: 20px;
+                font-weight: 700;
+                color: $gray-custom;
+            }
+            small{
+                font-size: 12px;
+                color: $gray-custom;
+            }
+        }        
+        .appointment-history-wrap{            
+            position: relative;
+            .icon-wrap{
+                height: 45px;
+                width: 45px;
+                border-radius: 100%;
+                padding: 13px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 8px;
+                i{
+                    font-size: 20px;
+                    color: $white;
+                    font-weight: 400;
+                }
+                &.block-success{
+                    background-color: #31ae5c;
+                }
+                &.block-info{
+                    background-color: #5cb4e6;
+                }
+                &.block-warning{
+                    background-color: #ffc600;
+                }
+            }
+            h6{
+                font-size: 13px;
+                font-weight: 700;
+            }
+            div{
+                font-size: 13px;
+                color: $light-gray;
+                width: calc( 100% - 85px);
+                display: inline-block;
+                vertical-align: middle;
+                strong{
+                    color: $light-black;
+                    font-weight: 700;
+                }
+            }
+        }
+        .advice-wrap{
+            i{
+                font-size: 30px;
+                color: $gray-custom;
+            }
+            .icon{
+                display: inline-block;
+                width: 40px;
+                float: left;
+            }
+            p{
+                width: calc( 100% - 45px );
+                display: inline-block;
+            }
+        }
+        .medications{
+            color: $light-gray;
+            h3{
+                span{
+                    font-size: 12px;
+                    font-weight: 400;
+                }
+            }
+            i{
+                font-size: 14px;
+                min-width: 20px;
+                color: $gray-custom;
+            }
+        }
+        .reports{
+            p{
+                width: calc( 100% - 60px);
+                display: inline-block;
+                small{
+                    display: block;
+                    font-size: 11px;
+                }
+            }
+            i{
+                font-size: 20px;
+                width: 20px;
+                vertical-align: top;
+                display: inline-block;
+                &.fa-download{
+                    color: #979797;
+                    font-weight: 400;
+                }
+                &.text-info-custom{
+                    color: #5cb4e6;
+                }
+                &.text-success-custom{
+                    color: #55ab63;
+                }
+                &.text-danger-custom{
+                    color: #ff0000;
+                }
+                &.text-warning-custom{
+                    color: #ffc600;
+                }
+            }
+        }
+    } 
+}
+
+.edit-patient-wrap{
+    #content{
+        .select-wrap{
+            .custom-select{
+                width: 100%;
+                height: 45px;
+            }
+            &:after{
+                top: 12px;
+            }
+        }
+    } 
+    .address-info{
+        .border-top{
+            padding: 14px 0;    
+            i{
+                font-size: 18px;
+                color: $gray-custom;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .badge-primary{
+                background-color: $primary;
+                border-radius: 100%;
+                font-size: 14px;
+                font-weight: 400;
+                padding: 7px 6px 5px;
+                line-height: 14px;
+            }
+        }
+    }
+    .user-photo{
+        @include media-breakpoint-down(sm) { 
+            text-align: center;
+        }
+        img{
+            max-width:145px;
+            display: block;
+            @include media-breakpoint-down(sm) { 
+                margin: 0 auto;
+            }
+        }
+        p{
+            font-size: 12px;
+            color: #8a8a8a;
+        }
+        .btn-file {
+            position: relative;
+            overflow: hidden;            
+            span{
+                width: 145px;
+                height: 45px;
+                font-size: 14px;
+                line-height: 31px;
+                margin: 15px 0 5px;
+            }
+            input[type=file] {
+                position: absolute;
+                top: 0;
+                right: 0;
+                min-width: 100%;
+                min-height: 100%;
+                font-size: 100px;
+                text-align: right;
+                filter: alpha(opacity=0);
+                opacity: 0;
+                outline: none;   
+                cursor: inherit;
+                display: block;
+            }
+        }
+    }
+    .basic-info{
+        &.payment-info{
+            margin: 0;
+            .name-group{
+                .first{
+                    border-top-right-radius: 0;
+                    border-bottom-right-radius: 0;
+                }
+                .last{
+                    border-top-left-radius: 0;
+                    border-bottom-left-radius: 0;
+                }
+            }
+            .mobile-group{
+                select{
+                    border-top-right-radius: 0;
+                    border-bottom-right-radius: 0;
+                }
+            }
+            .form-control{
+                height: 45px;
+                font-size: 14px;
+                &::-webkit-input-placeholder { 
+                    color: $light-black;
+                }
+                ::-moz-placeholder { 
+                    color: $light-black;
+                }
+                :-ms-input-placeholder { 
+                    color: $light-black;
+                }
+                :-moz-placeholder { 
+                    color: $light-black;
+                }
+            }
+            .card-details{
+                .form-control{
+                    font-size: 16px;
+                    font-weight: 700;
+                }
+                .btn{
+                    padding: 10px 20px;
+                    height: 45px;
+                    font-size: 14px;
+                    min-width: 140px;
+                    i{
+                        font-size: 12px;
+                        font-weight: 400;
+                    }
+                }
+            }
+            .save{
+                .btn{
+                    padding: 10px 20px;
+                    height: 45px;
+                    font-size: 14px;
+                    min-width: 140px;
+                    margin-top: 50px;
+                    @include media-breakpoint-down(sm) { 
+                        margin-top: 0px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#add-stats, #add-report, #add-vital, #add-prescription{
+    .close{
+        opacity: 1;
+        span{
+            background: $primary;
+            color: $white;
+            font-size: 14px;
+            font-weight: 300;
+            padding: 2px 5px;
+            border-radius: 100%;
+            margin-right: 10px;
+            margin-top: 10px;
+            float: right;
+        }        
+        &:focus{
+            outline: none;
+        }
+    }
+    .modal-content{
+        box-shadow: 0px 0px 20px 8px rgba( 0, 0, 0, 0.3);
+    }
+    .btn {
+        font-size: 14px;
+        padding: 11px 20px;
+        min-width: 130px;
+    }
+}
+
+#content{    
+    #add-report{
+        .select-wrap{
+            width: 100%;
+            &:after{
+                top: 30px;
+            }
+            .custom-select{
+                width: 100%;
+            }
+        }
+    }
+}
+
+#add-vital{
+    h4{
+        font-size: 14px;
+        font-weight: 700;
+    }
+}
+
+#add-prescription{
+    .doctor-notes{
+        .img-block{
+            display: inline-block;
+            vertical-align: middle;
+            min-width: 230px;
+            @include media-breakpoint-down(xs) { 
+                min-width: 100%;
+                margin-bottom: 24px;
+            }
+            img{
+                border: 2px solid $primary;
+                border-radius: 100%;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .text{
+                width: calc( 100% - 85px ); 
+                display: inline-block;
+                vertical-align: middle;
+                h3{
+                    font-size: 16px;
+                    font-weight: 700;                
+                }
+                p{
+                    font-size: 13px;
+                    color: $light-gray;                    
+                }
+            }
+        }   
+        .text{
+            width: calc( 100% - 240px ); 
+            display: inline-block;
+            vertical-align: middle;
+            @include media-breakpoint-down(xs) { 
+                width: 100%;
+            }
+            p{
+                span{
+                    color: $primary;
+                }
+            }
+        }
+    }    
+    .table-wrap{
+        max-height: 280px;
+        overflow-y: auto;
+        .table{
+            position: relative;
+            thead{
+                th{
+                    border-top: 0;
+                    background: $white;
+                    position: sticky;
+                    top: 0;
+                    box-shadow: 3px 4px 5px 0px rgba(204,204,204,0.5);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,162 @@
+@import "../css/styles";
+.doctor-patient-wrap{
+    .navbar{
+        margin: 0;
+    }
+    #content{
+        .doctor-wrapper{
+            .nav-tabs{
+                border: 0;
+                padding-top: 25px;
+                .nav-link{
+                    font-size: 12px;
+                    color: #c0c0c0;
+                    border: 0;
+                    svg{
+                        display: block;
+                        margin: 0 auto;
+                    }
+                    &.active, &:hover{
+                        color: $primary;
+                        background: none;
+                        border: 0;
+                        svg{
+                            path{
+                                fill: $primary;
+                            }
+                        }
+                    }
+                }
+            }
+            .tab-content {
+                padding: 24px 16px;
+                height: 100%;
+                background: rgb(254,254,254);
+                background: linear-gradient(90deg, rgba(254,254,254,1) 0%, rgba(239,239,239,1) 100%);
+            }
+            .tab-content{
+                margin-right: -30px;
+            }
+            .video-container{
+                .video-controls{
+                    span{
+                        width: 53px;
+                        height: 46px;
+                        margin-right: 10px;
+                        background-image: url('../images/video-icons.svg');
+                        background-repeat: no-repeat;
+                        background-position: -28px -19px;
+                        cursor: pointer;
+                        transition: all .2s ease;
+                        &.report{
+                            background-position: -90px -19px;
+                        }
+                        &.notes{
+                            background-position: -151px -19px;
+                        }
+                        &.play{
+                            background-position: -212px -19px;
+                        }
+                        &.pause{
+                            background-position: -274px -19px;
+                        }
+                        &.capture{
+                            background-position: -335px -19px;
+                        }
+                        &:hover{
+                            @extend .shadow;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.profile-view{    
+    h2{
+        font-size: 23px;
+        font-weight: 700;
+    }
+    &.appointment-wrapper{            
+        .basic-info{
+            .doctor-img{
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 20px;
+                position: relative;
+                &:after{
+                    content: '';
+                    width: 18px;
+                    height: 18px;
+                    background: #8fd19a;
+                    border-radius: 100%;
+                    position: absolute;
+                    right: 11px;
+                    bottom: 2px;
+                    border: 3px solid $white;
+                }
+            }
+            &.title{
+                h3{
+                    font-size: 24px;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+        .text{
+            width: calc( 100% - 155px );
+            display: inline-block;
+            vertical-align: middle;            
+            small{
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    .status{
+        vertical-align: middle;
+        padding-top: 13px;
+        i{
+            color: #8fd19a;
+            font-size: 8px;
+            vertical-align: middle;
+        }
+    }
+    .btn-primary{
+        padding: 10px 16px;
+        height: 45px;
+        font-size: 14px;
+    }
+    .doctor-profile-view{
+        .border-bottom{
+            address, a{
+                position: relative;
+                padding-left: 25px;
+                &:before{
+                    content: '\f3c5';
+                    font-family: "Font Awesome 5 Pro";
+                    color: #b6b9bc;
+                    position: absolute;
+                    left: 0;
+                    font-weight: 900;
+                }
+            }
+            a{
+                font-size: 14px;
+                color: $light-black;
+                &.tel{
+                    &:before{
+                        content: '\f879';
+                    }
+                }
+                &.mail{
+                    &:before{
+                        content: '\f0e0';
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+}

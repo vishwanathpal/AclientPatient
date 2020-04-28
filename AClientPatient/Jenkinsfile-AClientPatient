@@ -1,0 +1,37 @@
+//add bitbucket notifier related configurations
+node {
+    try {
+            stage('SCM') {
+                checkout scm
+            }
+
+            stage('Build Image') {
+                sh "docker build -t health24/clientpatient:$BUILD_NUMBER $WORKSPACE/AClientPatient"
+                sh "docker tag health24/clientpatient:$BUILD_NUMBER health24/clientpatient:latest"    
+            }
+
+            stage('Deploy') {
+                dir('/Health24') {
+                    sh label: '', returnStdout: true, script: '''docker-compose --compatibility up -d --force-recreate angular-clientpatient'''
+                }
+            }
+
+        echo 'This pipeline was successful.'
+
+    } catch (e) {
+
+        echo 'This pipeline was failed. Please look at Error log.'
+        // Since we're catching the exception in order to report on it,
+        // we need to re-throw it, to ensure that the build is marked as failed
+
+        throw e
+
+    } finally {
+        
+        echo 'Post pipeline cleanup started'
+
+        //cleanWs()
+        //sh "docker rmi -f \$(docker images -q -f dangling=true)"
+        //deleteDir()
+    }
+}

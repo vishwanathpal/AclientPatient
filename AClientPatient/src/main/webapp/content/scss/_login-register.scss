@@ -1,0 +1,156 @@
+
+.login-container, .reset-password-container{
+    color: $light-black;      
+    @include media-breakpoint-up(xl){
+        padding: 0 25px;    
+    }
+    form{
+        background: $white;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-size: 14px;
+        h1{
+            font-size: 16px;    
+            margin-bottom: 45px;
+            font-weight: 400;
+        }
+        .mobile-group{
+            .custom-select{
+                width: auto;
+                vertical-align: middle;
+                border-color: $border-color;
+                font-size: 14px;
+                line-height: 20px;
+                color: $light-black;
+                height: 45px;
+                background-image: none;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+                &:focus{
+                    box-shadow: none;
+                }
+            }
+            .select-wrap{
+                position: relative;
+                &:after{
+                    content: "\f078";
+                    font-family: "Font Awesome 5 Pro";
+                    color: #959595;
+                    right: 11px;
+                    top: 11px;
+                    position: absolute;
+                    pointer-events: none;
+                }
+            }         
+        }
+        .form-control{
+            height: 45px;
+            margin-bottom: 20px;
+        }
+        a, label{
+            font-weight: 400;
+            color: $light-black;  
+        }
+        button{
+            font-size: 14px;
+            line-height: 20px;
+            padding: 12px;
+            &.btn-primary{
+                margin-bottom: 13px;
+            }
+            &.btn-secondary{
+                margin-bottom: 30px;
+            }
+        }
+        .form-check{
+            padding-left: 0;
+        }
+    }
+    .separator{
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 15px;
+        margin-top: 10px;
+        &:before, &:after{
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #dbdbdb;
+        }
+        &:before{
+            margin-right: .25em;
+        }
+        &:after{
+            margin-left: .25em;
+        }
+    }
+}
+
+.reset-password-container{
+    form{
+        h1{
+            font-weight: 700;
+        }   
+        p{
+            color: #939393;
+            a{
+                color: $primary;
+            }
+        }
+        .digit-group{
+            margin-bottom: 25px;
+            input{
+                margin: 0 5px;
+                text-align: center;
+                font-size: 40px;
+                line-height: 50px;                    
+                font-weight: 500;
+                border: 0;
+                border-bottom: 2px solid $primary;
+                width: 20%;
+                transition: all .2s ease-in-out;
+                box-shadow: none;
+                &:focus {
+                    border-color: #2abf42;
+                    outline: none;
+                    box-shadow: none;
+                }
+                &::selection {
+                    background: transparent;
+                    border-color: #2abf42;
+                }
+            }
+        }
+    }    
+}
+
+.verification-container{
+    form{
+        p{
+            font-size: 16px;
+            color: $light-black;
+            a{
+                text-decoration: underline;
+            }
+        }
+    }    
+}
+
+
+.register-container{
+    form{
+        h1{
+            font-weight: 700;
+        }   
+        .name-group{
+            .first{
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+            .last{
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0; 
+            }
+        }
+    }
+}

@@ -1,0 +1,537 @@
+@import "../css/styles";
+.appointment-wrapper{
+    .row{
+        > div{
+            @include media-breakpoint-down(sm) { 
+                margin-bottom: 15px;
+            }
+        } 
+    }
+    .calander-wrap{
+        padding: 20px;
+        min-height: 100%;       
+    }
+    h3{
+        font-size: 16px;
+        font-weight: 700;
+        @media (min-width: 768px) and (max-width: 1024px) {
+            font-size: 15px;
+        }
+        .badge-success{
+            background: #8fd19a;
+            font-size: 13px;
+            padding: 4px 8px;
+        }
+    }
+    .doctor-main{
+        padding: 20px;
+        max-height: 635px;
+        overflow-y: auto;
+    }
+    .doctor-block{
+        padding: 20px 0 15px;
+        border-top: 1px solid #e9e9e9;
+        .header{
+            @extend .d-flex; 
+            margin-bottom: 30px;
+            .img-icon{
+                flex: 0 0 16%;
+                span{
+                    height: 56px;
+                    width: 56px;
+                    @extend .rounded-circle !optional; 
+                    border: 1px solid $primary;
+                    background-image: url('../images/doctor-thumb.png');
+                    background-size: cover;
+                    background-position: center;
+                }
+            }
+            .icon-wrapper{
+                flex: 0 0 10%;
+                a{
+                    i{
+                        font-size: 20px;
+                        color: #c6c6c6;
+                    }
+                    &:hover{
+                        i{
+                            color: $primary;
+                        }
+                    }
+                }
+            }
+        }
+        .text-body{
+            p,a{
+                font-size: 14px;
+                color: $light-black;
+            }
+            a{
+                &:hover{
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .title{
+        flex: 0 0 74%;
+        @media screen and (max-width: 1024px) {
+            flex: 0 0 65%;
+            margin-left: 10px;
+        }
+        h3{
+            font-size: 14px;
+            font-weight: 700;
+        }
+        small{
+            font-size: 13px;
+            color: $light-gray;
+        }
+        .rating{
+            i{
+                color: #90dcea;
+            }
+            span{
+                font-size: 13px;
+                color: $light-gray;
+            }
+        }
+    }
+    .basic-info{
+        @include media-breakpoint-down(md) { 
+            margin-bottom: 24px;
+        }
+        &.title{
+            @media screen and (max-width: 1024px) {
+                margin-left: 0px;
+            }
+            h3{
+                font-size: 16px;
+            }
+        }
+        .doctor-img{
+            height: 126px;
+            width: 126px;
+            border: 2px solid $primary;
+            background-image: url('../images/doctor-thumb-lg.png');
+            background-position: center;
+            margin: 0 auto 16px;
+            @extend .rounded-circle !optional; 
+        }
+    }
+    .address-info{
+        padding-right: 15px;
+        padding-bottom: 80px;
+        @include media-breakpoint-down(md) { 
+            padding-right: 0;
+            padding-bottom: 0;
+        }
+        .form-check{
+            padding-left: 0;
+        }
+        p, a{
+            font-size: 14px;
+            color: $light-black;
+        }
+        textarea{
+            min-height: 180px;
+            font-size: 14px; 
+        }  
+        .btn{
+            color: $white;
+            @include media-breakpoint-up(xl) {
+                padding: 7px 14px;
+            }
+            @media screen and (min-width: 1500px){
+                padding: 11px 25px;
+            }            
+            @include media-breakpoint-down(md) { 
+                display: block;
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
+    }
+    .time-slots{
+        padding: 20px;
+        min-height: 100%;
+        ul{
+            li{
+                @extend .mb-2;
+                margin-right: 7px;                
+                @extend .d-inline-block;
+                @include media-breakpoint-up(xl) {
+                    width: 22.5%;
+                }
+                @media screen and (min-width: 1500px){
+                    width: 18.5%;
+                }
+                @media screen and (max-width: 1024px) {
+                    width: 29.5%;
+                }
+                &:nth-child(3n){
+                    @media screen and (max-width: 1024px){
+                        margin-right: 0;
+                    }
+                }
+                &:nth-child(4n){
+                    margin-right: 0;
+                    @media screen and (min-width: 1500px){
+                        margin-right: 7px;
+                    }
+                    @media screen and (max-width: 1024px){
+                        margin-right: 7px;
+                    }
+                }
+                &:nth-child(5n){ 
+                    @media screen and (min-width: 1500px){
+                        margin-right: 0;
+                    }
+                }
+                a{
+                    font-size: 14px;
+                    border: 1px solid #acacac;
+                    padding: 6px 12px;
+                    color: $light-black;
+                    @extend .d-block;
+                    @extend .rounded;
+                    @extend .text-center;
+                    &:hover{
+                        text-decoration: none;
+                    }
+                }
+                &:hover, &.active{
+                    a{
+                        background: $primary;
+                        border-color: $primary; 
+                        color: $white;
+                        @extend .shadow;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.appointment-view{
+    h3{
+        font-size: 16px;
+        font-weight: 700;
+    }
+    .table-bordered{
+        thead{
+            tr{
+                th{
+                    border: 0;
+                    padding-left: 30px;
+                }
+            }
+        }
+    }
+    .table-hover{
+        color: $light-black;
+        tr, td{
+            padding-left: 30px;
+        }
+        tbody{
+            tr:hover{
+                background: #def3e2;
+                cursor: pointer;
+            }
+        } 
+    } 
+    .patient-appointment{
+        .confirm, .pending, .cancel {
+            font-size: 11px;
+            text-transform: uppercase;
+            background: #10a74a;
+            color: $white;
+            border-radius: 4px;
+            padding: 5px 20px 4px;
+            line-height: 11px;
+        }
+        .pending{
+            background: #ffc107;
+        }
+        .cancel {
+            background: #ec0323;
+        }
+        .table-responsive{
+            @include media-breakpoint-up(xl) {
+                overflow-x: inherit;
+            }
+        }
+    }
+}
+
+
+.appointment-confirmation-wrap{
+    h3{
+        font-size: 16px;
+        font-weight: 700;
+    }
+    .row{
+        .col-xl-9{
+            @include media-breakpoint-down(lg) {
+                margin-bottom: 24px;
+            }
+        }        
+    }
+    .table{
+        tbody{
+            th{
+                vertical-align: middle;
+            }
+        }
+    }
+    .booking-block{
+        max-width: 490px;
+        margin: 0 auto;
+        .booking-info{
+            .fa-check{
+                color: #10a74a;
+                border: 2px solid #10a74a;
+                border-radius: 100%;
+                padding: 13px;
+                font-size: 38px;
+                @include media-breakpoint-down(sm){
+                    padding: 8px;
+                    font-size: 26px;
+                }
+            }
+            .fa-times{
+                color: #fd0a21;
+                border: 2px solid #fd0a21;
+                border-radius: 100%;
+                padding: 13px;
+                font-size: 38px;
+                @include media-breakpoint-down(sm){
+                    padding: 8px;
+                    font-size: 26px;
+                }
+            }
+            h2{
+                font-size: 36px;
+                font-weight: 700;
+                @include media-breakpoint-down(sm){
+                    font-size: 26px;
+                }
+            }
+        }
+        .border-top{
+            padding: 20px 0;
+            .row{
+                .col{
+                    @include media-breakpoint-down(xs){
+                        flex-basis: 100%;
+                    }
+                }
+            }
+        }
+        .img-text-block{
+            img{
+                border: 2px solid $primary;
+                border-radius: 100%;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .text{
+                width: calc( 100% - 85px ); 
+                display: inline-block;
+                vertical-align: middle;
+                h3{
+                    font-size: 16px;
+                    font-weight: 700;                
+                }
+                p{
+                    font-size: 13px;
+                    color: $light-gray;                    
+                }
+            }
+        }
+        .price{
+            font-size: 18px;
+            padding: 20px 0
+        }
+        .button-group{
+            a{
+                font-size: 14px;
+                font-weight: 400;
+                padding: 11px 20px;
+                color: $white;
+                &.btn-success, &.btn-danger{
+                    padding: 11px 30px;
+                    @include media-breakpoint-only(md){
+                        padding: 10px;
+                    }
+                }
+                @include media-breakpoint-only(md){
+                    padding: 10px;
+                    margin-right: 7px !important;
+                }
+                @include media-breakpoint-down(sm) {
+                    margin-right: 0 !important;
+                    margin-bottom: 16px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    #cancel{
+        p{
+            font-size: 16px;
+        }
+        .close {
+            opacity: 1;
+            color: $white;
+            position: absolute;
+            right: -13px;
+            top: -12px;
+            z-index: 99;
+            &:focus{
+                outline: none;
+            }
+            span{
+                background: #ea5b36;
+                padding: 4px 10px;
+                border-radius: 100%;
+                font-weight: 400;
+                box-shadow: -1px 1px 4px -1px rgba(234,91,54,1);
+            }
+        }
+        .modal-body{
+            padding-top: 65px;
+        }
+        .btn{
+            font-size: 14px;
+            padding: 11px 20px;
+            min-width: 130px;
+        }
+    }
+    #reschedule-request{
+        @include media-breakpoint-down(xs) { 
+            padding: 1rem;
+        }
+        .modal-lg{
+            @include media-breakpoint-up(lg) { 
+                max-width: 850px;
+            }
+        }
+        h3{
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .close {
+            opacity: 1;
+            color: $white;
+            position: absolute;
+            right: -13px;
+            top: -12px;
+            z-index: 99;
+            &:focus{
+                outline: none;
+            }
+            span{
+                background: #ea5b36;
+                padding: 4px 10px;
+                border-radius: 100%;
+                font-weight: 400;
+                box-shadow: -1px 1px 4px -1px rgba(234,91,54,1);
+            }
+        }
+        .btn{
+            font-size: 14px;
+            padding: 11px 20px;
+            min-width: 130px;
+        }
+        .time-slots{
+            ul{
+                li{
+                    @extend .mb-2;
+                    margin-right: 3px;                
+                    @extend .d-inline-block;
+                    @include media-breakpoint-up(xl) {
+                        width: 22.5%;
+                    }
+                    @media screen and (min-width: 1500px) {
+                        width: 23.5%;
+                    }
+                    @media screen and (max-width: 1024px) {
+                        width: 29.5%;
+                    }
+                    &:nth-child(3n){
+                        @media screen and (max-width: 1024px){
+                            margin-right: 7px;
+                        }
+                    }
+                    &:nth-child(4n){
+                        margin-right: 0;
+                        @media screen and (min-width: 1500px){
+                            margin-right: 7px;
+                        }
+                    }
+                    &:nth-child(5n){ 
+                        @media screen and (min-width: 1500px){
+                            margin-right: 0;
+                        }
+                    }
+                    a{
+                        font-size: 14px;
+                        border: 1px solid #acacac;
+                        padding: 6px 10px;
+                        color: $light-black;
+                        @extend .d-block;
+                        @extend .rounded;
+                        @extend .text-center;
+                        &:hover{
+                            text-decoration: none;
+                        }
+                        @media screen and (max-width: 1024px) {
+                            padding: 6px 8px;
+                        }
+                    }
+                    &:hover, &.active{
+                        a{
+                            background: $primary;
+                            border-color: $primary; 
+                            color: $white;
+                            @extend .shadow;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .schedule-wrap{
+        .bg-white{
+            padding: 120px 0;
+            @include media-breakpoint-down(sm){
+                padding: 60px 0;
+            }
+        }   
+        .button-group{
+            a{
+                font-size: 14px;
+                font-weight: 400;
+                padding: 11px 12px;
+                color: $white;
+                &.btn-primary, &.btn-danger{
+                    padding: 11px 20px;
+                    @include media-breakpoint-only(md){
+                        padding: 10px;
+                    }
+                }
+                @include media-breakpoint-only(md){
+                    padding: 10px;
+                    margin-right: 7px !important;
+                }
+                @include media-breakpoint-down(sm) {
+                    margin-right: 0 !important;
+                    margin-bottom: 16px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

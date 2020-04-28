@@ -1,0 +1,178 @@
+@import "../css/styles";
+
+#content{
+	background-color: #f5f5f5 !important;
+    .custom-select{
+        width: auto;
+        vertical-align: middle;
+        border-color: $border-color;
+        font-size: 14px;
+        line-height: 20px;
+        color: $light-black;
+        height: 40px;
+        background-image: none;
+        &:focus{
+            box-shadow: none;
+        }
+    }
+    .select-wrap{
+        position: relative;
+        &:after{
+            content: "\f078";
+            font-family: "Font Awesome 5 Pro";
+            color: #959595;
+            right: 11px;
+            top: 9px;
+            position: absolute;
+            pointer-events: none;
+        }
+    }
+    .search-wrapper{        
+        h2{
+            font-size: 23px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .card{
+            margin-bottom: 30px;
+            cursor: pointer;
+            transition: all .2s ease;
+            &:hover{
+                @extend .shadow-lg !optional;
+            }
+        }
+        .card-header{
+            @extend .bg-transparent;
+            @extend .border-bottom-0;
+            padding: 20px 20px 10px;
+            .card-img{
+                width: 65px;
+                vertical-align: middle;
+                @extend .d-inline-block;
+                img{
+                    @extend .rounded-circle !optional; 
+                    border: 1px solid $primary;
+                }
+            }
+            .card-title{
+                width: calc(100% - 70px);
+                vertical-align: middle;
+                @extend .d-inline-block;
+                h3{
+                    @extend .mb-0;
+                    font-size: 16px;
+                    font-weight: 700;
+                }
+                small{
+                    font-size: 13px;
+                    color: $light-gray;
+                }
+            }
+            .rating{
+                i{
+                    color: #90dcea;
+                }
+                span{
+                    font-size: 13px;
+                    color: $light-gray;
+                }
+            }
+        }
+        .card-body{
+            .card-link{
+                color: $light-black;
+                &:hover{
+                    color: $light-black;
+                    text-decoration: none;
+                }
+            }
+            .link{
+                color: #b9b9b9;
+                &:hover{
+                    color: $primary;
+                    text-decoration: none;
+                    i{
+                        color: $primary;
+                    }
+                }
+                i{
+                    font-size: 18px;
+                    color: #c6c6c6;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+    .search-form-wrap{
+        input{
+            width: auto;
+            vertical-align: middle;
+        }
+        input{
+            min-width: 150px;
+        }
+        .form-control{
+            border-color: $border-color;
+            font-size: 14px;
+            line-height: 20px;
+            color: $light-black;
+            height: 40px;
+            &:focus{
+                box-shadow: none;
+            }
+        }
+        .search{
+            position: relative;
+            i{
+                font-weight: 300;
+                position: absolute;
+                right: 22px;
+                color: #b9b9b9;
+                font-size: 20px;
+                top: 9px;
+            }
+        }
+    }
+    .pagination{
+        .page-item{
+            &.active{
+                .page-link{
+                    background-color: $primary;
+                    @extend .rounded;
+                    color: $white;
+                    font-weight: 700;
+                }                    
+            }
+            &.disabled{
+                .page-link{
+                    color: #a9a9a9;
+                }
+            }
+            .page-link{
+                background: none;
+                @extend .border-0;
+                color: $light-black;
+                padding: 5px 10px;
+            }
+        }             
+    }
+    .width150{
+        width: 150px;
+    }
+    
+    .btn{
+	    font-size: 14px;
+	    // padding: 11px 20px;
+	    min-width: 100px;
+    }
+}
+
+.ngb-dp-arrow {
+	.btn{
+	    min-width: auto !important;
+    }
+}
+
+.mat-calendar-body-selected {
+    background-color: #f17e00 !important;
+}

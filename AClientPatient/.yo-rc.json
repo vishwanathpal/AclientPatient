@@ -1,0 +1,32 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.6.0",
+    "applicationType": "monolith",
+    "baseName": "AClientPatient",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "authenticationType": "uaa",
+    "uaaBaseName": "oauthpatient",
+    "cacheProvider": "no",
+    "databaseType": "postgres",
+    "devDatabaseType": "postgres",
+    "prodDatabaseType": "postgres",
+    "creationTimestamp": 1585279488866,
+    "testFrameworks": ["protractor"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en", "nl"],
+    "blueprints": [],
+    "skipServer": true
+  }
+}

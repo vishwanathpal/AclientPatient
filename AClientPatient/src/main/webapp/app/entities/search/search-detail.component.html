@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="search">
+            <h2><span jhiTranslate="aClientPatientApp.search.detail.title">Search</span> {{search.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="aClientPatientApp.search.firstName">First Name</span></dt>
+                <dd>
+                    <span>{{search.firstName}}</span>
+                </dd>
+                <dt><span jhiTranslate="aClientPatientApp.search.lastName">Last Name</span></dt>
+                <dd>
+                    <span>{{search.lastName}}</span>
+                </dd>
+                <dt><span jhiTranslate="aClientPatientApp.search.imageUrl">Image Url</span></dt>
+                <dd>
+                    <span>{{search.imageUrl}}</span>
+                </dd>
+                <dt><span jhiTranslate="aClientPatientApp.search.phoneNumber">Phone Number</span></dt>
+                <dd>
+                    <span>{{search.phoneNumber}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/search', search.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

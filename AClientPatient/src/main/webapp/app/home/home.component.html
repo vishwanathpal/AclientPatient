@@ -1,0 +1,48 @@
+<div class="container d-flex h-100">
+     <div class="row align-self-center w-100">
+         <div class="col-12 col-md-8 col-lg-5 mx-auto">
+             <div class="login-container">
+	            <div class="alert alert-danger" *ngIf="authenticationError" jhiTranslate="login.messages.error.authentication1">
+	                <strong>Failed to sign in!</strong> Please check your credentials and try again.
+	            </div>
+                 <div class="logo">
+                     <img src="/content/images/logo.png" alt="logo" class="mx-auto d-block img-fluid"/>
+                 </div>
+                 <form class="p-30 rounded-lg shadow-sm bg-white rounded form" role="form" (ngSubmit)="login()" [formGroup]="loginForm">
+                     <h1 class="text-center">Login to access your Health 24 Account</h1>
+                     <div class="form-group">
+                         <label class="username-label" for="username" jhiTranslate="global.form.username.label">Login</label>
+                         <input type="text" class="form-control" name="username" id="username" placeholder="{{'global.form.username.placeholder' | translate}}"
+                           formControlName="username" #username>
+                     </div>
+                     <div class="form-group">
+                         <label for="password" jhiTranslate="login.form.password">Password</label>
+                    	<input type="password" class="form-control" name="password" id="password" placeholder="{{'login.form.password.placeholder' | translate}}"
+                           formControlName="password">
+                     </div>
+                     <button type="submit" class="btn btn-primary btn-lg btn-block rounded">Login</button>                            
+                     <div class="row">
+                         <div class="col">
+                             <div class="form-group form-check m-0">
+                                 <!--<input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                 <label class="form-check-label" for="exampleCheck1">Remember me</label>-->
+                                 <!-- <input class="custom-checkbox" id="custom-checkbox-1" type="checkbox" value="value1"> -->
+                                 <!-- <label for="custom-checkbox-1" class="m-0">Remember me</label> -->
+                                 <a class="alert-link" (click)="register()" jhiTranslate="global.messages.info.register.link">Register a new account</a>
+                             </div>
+                         </div>
+                         <div class="col text-right">
+                             <a class="alert-link" (click)="requestResetPassword()" >Forgot your password?</a>
+                         </div>
+                     </div>
+                     <div class="separator">Or</div>
+                     <button type="submit" class="btn btn-secondary btn-lg btn-block rounded">Login using mobile number</button>       
+                     <p class="text-center m-0">Have multiple account? <a href="#">Connect</a></p>
+                 </form>
+                 <div class="copyright text-center">
+                     <p class="m-0">&copy; 2020 All Rights Reserved</p>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>

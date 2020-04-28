@@ -1,0 +1,107 @@
+<div id="content-nav" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_USER', 'ROLE_PATIENT']">
+	<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" >
+        <div class="container-fluid p-0">
+            <div class="sidebar-header">
+            	<a class="text-center" routerLink="/dashboard" (click)="collapseNavbar()">
+                	<img src="/content/images/logo.png" alt="logo" class="mx-auto d-block img-fluid logo"/>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="ml-auto" id="mainMenu" [ngClass]="status ? 'active' : ''">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *jhiHasAnyAuthority="['ROLE_PATIENT']">
+			                <a class="nav-link text-center" routerLink="dashboard" (click)="collapseNavbar()">
+			                    <span>
+			                        <i class="far fa-address-card d-block mx-auto"></i>
+			                        <span jhiTranslate="global.menu.entities.dashboard">Dashboard</span>
+			                    </span>
+			                </a>
+						</li>
+						<li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *jhiHasAnyAuthority="['ROLE_PATIENT']">
+			                <a class="nav-link text-center" routerLink="/search" (click)="collapseNavbar()">
+			                    <span>
+			                        <i class="far fa-search d-block mx-auto"></i>
+			                        <span jhiTranslate="global.menu.entities.search">Search</span>
+			                    </span>
+			                </a>
+			            </li>
+			            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *jhiHasAnyAuthority="['ROLE_PATIENT']">
+			                <a class="nav-link text-center" routerLink="/appointment" (click)="collapseNavbar()">
+			                    <span>
+			                        <i class="far fa-calendar-alt d-block mx-auto"></i>
+			                        <span jhiTranslate="global.menu.entities.appointments">Appointments</span>
+			                    </span>
+			                </a>
+			            </li>
+                        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *jhiHasAnyAuthority="['ROLE_PATIENT']">
+							<a class="nav-link text-center" routerLink="/myhealthprofile/mystats" (click)="collapseNavbar()">
+			                    <span>
+			                        <i class="fas fa-heartbeat d-block mx-auto"></i>
+			                        <span jhiTranslate="global.menu.entities.myhealthprofile">My Health Profile</span>
+			                    </span>
+			                </a>
+			            </li>
+                        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *jhiHasAnyAuthority="['ROLE_PATIENT']">
+			                <a class="nav-link text-center" routerLink="/paymentandinvoices" (click)="collapseNavbar()">
+			                    <span>
+			                        <i class="far fa-list-alt d-block mx-auto"></i>
+			                        <span jhiTranslate="global.menu.entities.paymentinvoices">Payment & invoices</span>
+			                    </span>
+			                </a>
+			            </li>
+                        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *jhiHasAnyAuthority="['ROLE_PATIENT']">
+			                <a class="nav-link text-center" routerLink="/" (click)="collapseNavbar()">
+			                    <span>
+			                        <i class="fas fa-plus d-block mx-auto"></i>
+			                        <span jhiTranslate="global.menu.entities.more">More...</span>
+			                    </span>
+			                </a>
+			            </li>
+                        <!-- <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" *ngIf="languages && languages.length > 1">
+                            <a class="nav-link text-center dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown">
+                            	<i class="far fa-flag d-block mx-auto"></i>
+                            	<span jhiTranslate="global.menu.language">Language</span>
+                            </a>
+                            <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="languagesnavBarDropdown">
+			                    <li *ngFor="let language of languages">
+			                        <a class="dropdown-item" [jhiActiveMenu]="language" href="javascript:void(0);" (click)="changeLanguage(language);collapseNavbar();">{{language | findLanguageFromKey}}</a>
+			                    </li>
+			                </ul>
+                        </li> -->
+                    </ul>
+                </div>                            
+                <ul class="nav-user list-unstyled">
+                    <li ngbDropdown class="active-user nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+		                <a class="nav-link dropdown-toggle marginRight0" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
+		                  <span *ngIf="getImageUrl()">
+		                      <img [src]="getImageUrl()" class="profile-image rounded-circle user-thumb" alt="Avatar">
+		                  </span>
+		                  <span *ngIf="getUserName()">{{getUserName()}}</span>
+		                </a>
+		                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="account-menu">
+		                    <li>
+		                        <a class="dropdown-item" routerLink="account/settings" routerLinkActive="active" (click)="collapseNavbar()">
+		                            <fa-icon icon="wrench" fixedWidth="true"></fa-icon>
+		                            <span jhiTranslate="global.menu.account.settings">Settings</span>
+		                        </a>
+		                    </li>
+		                    <li>
+		                        <a class="dropdown-item" routerLink="account/password" routerLinkActive="active" (click)="collapseNavbar()">
+		                            <fa-icon icon="lock" fixedWidth="true"></fa-icon>
+		                            <span jhiTranslate="global.menu.account.password">Password</span>
+		                        </a>
+		                    </li>
+		                    <li>
+		                        <a class="dropdown-item" (click)="logout()" id="logout">
+		                            <fa-icon icon="sign-out-alt" fixedWidth="true"></fa-icon>
+		                            <span jhiTranslate="global.menu.account.logout">Sign out</span>
+		                        </a>
+		                    </li>
+		                </ul>
+		            </li>
+                </ul>
+                <a href="javascript:void(0);" class="d-inline-block menu-icon" id="menuCollapse" (click)="clickEvent()" *jhiHasAnyAuthority="['ROLE_PATIENT']"><i class="fas fa-bars"></i></a>
+            </div>
+        </div>
+	</nav>
+</div>

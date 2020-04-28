@@ -1,0 +1,58 @@
+<div id="prescriptions" class="tab-pane mt-4">
+    <form class="mb-3">
+        <div class="form-row search-form-wrap">
+            <div class="col">
+                <label class="select-wrap">
+                    <select class="custom-select d-inline-block" id="inlineFormCustomSelect" [(ngModel)]="itemsPerPage"
+                        (change)="viewChange($event.target.value)">
+                        <option [value]="8" [selected]="itemsPerPage === 8">View 8</option>
+                        <option [value]="16" [selected]="itemsPerPage === 16">View 16</option>
+                        <option [value]="32" [selected]="itemsPerPage === 32">View 32</option>
+                        <option [value]="40" [selected]="itemsPerPage === 40">View 40</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+    </form>
+    <div class="table-responsive ">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Dietary Note</th>
+                    <th scope="col">Special Note</th>
+                    <th scope="col">Created Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let prescription of prescriptions; index as i;">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{prescription.dietaryNote}}</td>
+                    <td>{{prescription.specialNote}}</td>
+                    <td>{{prescription.createdDate | date:'MM dd, yyyy, hh:mm:ss a'}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col">
+        <p>Showing 1 to 8 of 2 entries</p>
+    </div>
+    <div class="col">
+        <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item active">
+                <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </div>
+</div>
